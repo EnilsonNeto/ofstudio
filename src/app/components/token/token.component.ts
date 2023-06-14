@@ -47,7 +47,6 @@ export class TokenComponent {
       this.number = this.items[0].number;
       this.procedimento = this.items[0].procedimento; 
       this.active = this.items[0].active; 
-      this.active = this.items[0].active; 
       this.id = this.items[0].idHash; 
     });
   }
