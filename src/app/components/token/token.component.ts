@@ -21,6 +21,7 @@ export class TokenComponent {
   idHash: any;
   active: any;
   id: any;
+  nameTable: any;
   
   constructor(public http: HttpClient){
 
@@ -31,7 +32,7 @@ export class TokenComponent {
   }
   
   getItemsFromAirtable() {
-    const url = `https://api.airtable.com/v0/app5qbSshO2ZFVei1/Camille`;
+    const url = `https://api.airtable.com/v0/app5qbSshO2ZFVei1/${this.nameTable}`;
     const headers = this.autorization;
     const params = {
       filterByFormula: `idHash='${this.idHash}'`,
@@ -60,7 +61,7 @@ export class TokenComponent {
       cancelButtonColor: '#d20000'
     }).then((result) => {
       if (result.isConfirmed) {
-        const url = `https://api.airtable.com/v0/app5qbSshO2ZFVei1/Camille/${this.id}`;
+        const url = `https://api.airtable.com/v0/app5qbSshO2ZFVei1/${this.nameTable}/${this.id}`;
         const headers = this.autorization
         const body = {
           fields: {
@@ -87,7 +88,7 @@ export class TokenComponent {
       cancelButtonColor: '#d20000'
     }).then((result) => {
       if (result.isConfirmed) {
-        const url = `https://api.airtable.com/v0/app5qbSshO2ZFVei1/Camille/${this.id}`;
+        const url = `https://api.airtable.com/v0/app5qbSshO2ZFVei1/${this.nameTable}/${this.id}`;
         const headers = this.autorization
         const body = {
           fields: {

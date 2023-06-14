@@ -8,7 +8,7 @@
       <div class="clearfix">
         <mat-slide-toggle class="slideSelect" [(ngModel)]="listActive"
           (change)="listActive ? showActive() : showInactive()">
-          {{ listActive ? 'Usuários Ativos' : 'Usuários Inativos' }}
+          {{ listActive ? 'Clientes não atendidos' : 'Clientes atendidos' }}
         </mat-slide-toggle>
         <div class="bodyFixed">
           <div class="row">

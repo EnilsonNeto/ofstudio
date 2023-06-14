@@ -27,7 +27,8 @@ export class CamilleComponent {
   descendingOrder: boolean = false;
   dialogLoad: any;
   displayedColumns: string[] = ['name', 'data', 'active', 'dialogAction'];
-
+  table = 'Camille';
+  
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
@@ -168,6 +169,7 @@ export class CamilleComponent {
   openModal(item: any){
     const dialogRef = this.dialog.open(TokenComponent);
     dialogRef.componentInstance.idHash = item.idHash;
+    dialogRef.componentInstance.nameTable = this.table;
   }
 
   loadingModal() {
