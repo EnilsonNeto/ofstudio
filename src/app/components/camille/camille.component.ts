@@ -8,6 +8,7 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 import Swal from 'sweetalert2';
 import { LoadingModalComponent } from 'src/app/shared/loading-modal/loading-modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { TokenComponent } from '../token/token.component';
 
 @Component({
   selector: 'app-camille',
@@ -25,7 +26,7 @@ export class CamilleComponent {
   ascendingOrder: boolean = true;
   descendingOrder: boolean = false;
   dialogLoad: any;
-
+  displayedColumns: string[] = ['name', 'data', 'active', 'dialogAction'];
 
   constructor(
     private http: HttpClient,
@@ -40,21 +41,15 @@ export class CamilleComponent {
 
   ngOnInit(): void {
     this.getItemsFromAirtable();
+    this.sortItems();
   }
 
-  openWhatsApp(number: string) {
-    const phoneNumber = number.replace(/\s/g, '');
-    const countryCode = '+55';
-    const formattedNumber = phoneNumber.startsWith(countryCode)
-      ? phoneNumber
-      : countryCode + phoneNumber;
-    window.open(`https://wa.me/${formattedNumber}`, '_blank');
-  }
-
-  openCallApp(number: string) {
-    const phoneNumber = number.replace(/\s/g, '');
-    const formattedNumber = `tel:${phoneNumber}`;
-    window.open(formattedNumber, '_blank');
+  sortItems() {
+    if (this.items && this.items.length > 0) {
+      return this.items.sort((a, b) => a.data.localeCompare(b.data));
+    } else {
+      return [];
+    }
   }
 
   getItemsFromAirtable() {
@@ -64,33 +59,26 @@ export class CamilleComponent {
     const params = {
       fields: ['name', 'surname', 'data', 'number', 'active', 'procedimento', 'idHash']
     };
-  
+
     this.http.get(url, { headers, params }).subscribe((data: any) => {
       this.items = data.records.map((record: any) => record.fields);
-      this.sortClients();
-    });
-  }
-
-  toggleOrder() {
-    this.ascendingOrder = !this.ascendingOrder;
-    this.descendingOrder = !this.descendingOrder;
-    this.sortClients();
-  }
-
-  sortClients() {
-    if (this.items && this.items.length > 0) {
-      if (this.ascendingOrder) {
-        this.items.sort((a, b) => a.name.localeCompare(b.name));
-      } else if (this.descendingOrder) {
-        this.items.sort((a, b) => b.name.localeCompare(a.name));
+      this.activeItems = this.items.filter(item => item.active === true);
+      this.inactiveItems = this.items.filter(item => item.active === undefined);
+      if (this.listActive === true) {
+        this.showActive();
+      } else if (this.listActive === false) {
+        this.showInactive();
       }
-    }
+    });
   }
 
   onInputChange(value: string) {
     if (value === '') {
-      this.filter('');
-      this.getItemsFromAirtable();
+      if (this.listActive === true) {
+        this.showActive();
+      } else if (this.listActive === false) {
+        this.showInactive();
+      }
     }
   }
 
@@ -123,14 +111,10 @@ export class CamilleComponent {
 
   showActive() {
     this.items = this.activeItems;
-    this.listActive = true
-    this.getItemsFromAirtable();
   }
 
   showInactive() {
     this.items = this.inactiveItems;
-    this.listActive = undefined
-    this.getItemsFromAirtable();
   }
 
   disableUser(item: any) {
@@ -181,11 +165,13 @@ export class CamilleComponent {
     });
   }
 
+  openModal(item: any){
+    const dialogRef = this.dialog.open(TokenComponent);
+    dialogRef.componentInstance.idHash = item.idHash;
+  }
+
   loadingModal() {
-
     this.dialogLoad = this.dialog.open(LoadingModalComponent);
-
     this.dialogLoad.close();
-
   }
 }

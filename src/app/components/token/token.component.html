@@ -1,0 +1,33 @@
+<div class="modal-content" *ngIf="items !== undefined || null">
+  <h3>{{ name }} {{ surname }}</h3>
+  <br>
+  <div class="variable-container">
+    <div class="variable-item">
+      <span>Data Marcada:</span>
+      <b>{{ data }}</b>
+    </div>
+    <div class="variable-item">
+      <span>Procedimento:</span>
+      <b>{{ procedimento }}</b>
+    </div>
+    <div class="variable-item">
+      <span>Numero:</span>
+      <b>{{ number }}</b>
+      <button mat-icon-button class="whats" (click)="openWhatsApp(number)">
+        <i class="pi pi-whatsapp" style="font-size: 1.5rem; color: #0bb00b;"></i>
+      </button>
+      <button mat-icon-button (click)="openCallApp(number)">
+        <mat-icon style="color: #0bb00b;">phone</mat-icon>
+      </button>
+    </div>
+    <div class="bttn">
+      <button matDialogClose mat-button>Voltar</button>
+      <button class="styledBtn" mat-flat-button color="primary" *ngIf="active === undefined"
+        (click)="enableUser()">Cliente não atendido
+      </button>
+      <button class="styledBtn" mat-flat-button color="primary" *ngIf="active === true" (click)="disableUser()">Concluir
+        Atendimento
+      </button>
+    </div>
+  </div>
+</div>

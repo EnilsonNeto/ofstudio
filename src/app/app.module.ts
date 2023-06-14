@@ -21,6 +21,8 @@ import { CdkStepperModule } from '@angular/cdk/stepper';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table' 
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -36,6 +38,9 @@ import { SchedulingComponent } from './components/scheduling/scheduling.componen
 import { CamilleComponent } from './components/camille/camille.component';
 import { ReneeComponent } from './components/renee/renee.component';
 import { LoginComponent } from './login/login.component';
+import { TokenComponent } from './components/token/token.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LoadingModalComponent } from './shared/loading-modal/loading-modal.component';
 
 import { FormsModule } from '@angular/forms';
 import { FlatpickrModule } from 'angularx-flatpickr';
@@ -47,8 +52,6 @@ import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { environment } from 'src/environments/environment.prod';
 import { AuthService } from './shared/services/auth.service';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { LoadingModalComponent } from './shared/loading-modal/loading-modal.component';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 registerLocaleData(localePt);
@@ -64,7 +67,8 @@ registerLocaleData(localePt);
     ReneeComponent,
     LoginComponent,
     DashboardComponent,
-    LoadingModalComponent
+    LoadingModalComponent,
+    TokenComponent
   ],
   imports: [
     HttpClientModule,
@@ -100,6 +104,8 @@ registerLocaleData(localePt);
     NgxMaskPipe,
     MatProgressSpinnerModule,
     FontAwesomeModule,
+    MatCardModule,
+    MatTableModule
   ],
   providers: [
     AuthService,

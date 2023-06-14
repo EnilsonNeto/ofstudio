@@ -16,8 +16,11 @@
 
 .header{
   margin-top: 1rem;
-  margin-left: 1.5rem;
+  margin-left: 3rem;
   margin-bottom: 1.5rem;
+  text-align: center;
+  align-items: center;
+  display: flex;
 }
 
 .header h2 {
@@ -48,7 +51,6 @@
   border: none;
   cursor: pointer;
   display: flex;
-  flex-direction: column;
   margin-top: 15px;
   margin-right: 10px;
 }
@@ -101,6 +103,15 @@ th{
 .row {
   display: flex;
   flex-direction: row;
+  margin-left: 10px;
+}
+
+.check{
+  color: #0bb00b;
+}
+
+.noCheck{
+  color: #c80000;
 }
 
 .search {
@@ -112,6 +123,7 @@ th{
   display: flex;
   flex-direction: column;
   margin: 2rem;
+  padding-bottom: 1rem;
 }
 
 .sortLetter{
@@ -121,12 +133,16 @@ th{
 
 @media (max-width: 700px){
   .card{
-    width: 70rem;
+    width: 22rem;
+    border-radius: 10px;
+  }
+
+  .table{
+    border-radius: 10px;
   }
 
   .bodyFixed{
     width: 40rem;
-    overflow-x: auto;
   }
 }
 

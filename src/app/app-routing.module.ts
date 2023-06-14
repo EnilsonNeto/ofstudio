@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { LoginGuard } from './shared/guard/login.guard';
+import { TokenComponent } from './components/token/token.component';
 
 const routes: Routes = [
   {
