@@ -13,20 +13,16 @@ import { LoginGuard } from './shared/guard/login.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'pagina-inicial',
     pathMatch: 'full'
   },
   {
-    path: 'home',
+    path: 'pagina-inicial',
     component: HomeComponent,
   },
   {
-    path: 'courses',
+    path: 'cursos',
     component: CoursesComponent,
-  },
-  {
-    path: 'scheduling',
-    component: SchedulingComponent,
   },
   {
     path: 'camille',
@@ -49,7 +45,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'home',
+    redirectTo: 'pagina-inicial',
   }
 ];
 
