@@ -1,0 +1,61 @@
+<div class="main">
+    <app-menu></app-menu>
+    <div class="newBox">
+        <div class="welcome">
+            <h1>Seja Bem-Vindo!</h1>
+        </div>
+        <div class="boxInit">
+            <div class="helloPeople">
+                <h4> Já nos conhece e deseja realizar seu agendamento?<br>
+                    clique no botão abaixo.</h4>
+                <button mat-flat-button color="accent" (click)="openDialogRecord()">
+                    Realizar Agendamento
+                </button>
+            </div>
+            <mat-divider [vertical]="true" color="accent"></mat-divider>
+            <div class="carrosel">
+                <h2>Novidades</h2>
+                <carousel class="carousel">
+                    <slide class="carousel-item active">
+                        <img class="imgCarossel" src="../assets/images/image1.png" alt="Imagem 1">
+                    </slide>
+                    <slide class="carousel-item">
+                        <img class="imgCarossel" src="../assets/images/image2.png" alt="Imagem 2">
+                    </slide>
+                    <slide class="carousel-item">
+                        <img class="imgCarossel" src="../assets/images/image3.png" alt="Imagem 3">
+                    </slide>
+                </carousel>
+            </div>
+        </div>
+    </div>
+
+    <div class="midBox">
+        <mat-divider color="primary" class="dividerPage"></mat-divider>
+    </div>
+    <section id="sobre">
+        <div class="sobre">
+            <div class="boxAbout">
+                <div class="textAbout">
+                    <h4>Sobre Nós</h4>
+
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum,<br> minima amet nisi ab eum
+                        recusandae asperiores, officiis nobis laudantium <br> aliquam error, in tempora aperiam.
+                        Mollitia
+                        <br> nemo corporis incidunt. Aliquid, reprehenderit!
+                        Lorem ipsum, <br> dolor sit amet consectetur adipisicing elit. <br> Quas neque autem voluptate
+                        id
+                        doloribus a rem maxime in eveniet, <br> accusamus similique, iusto beatae consequuntur quibusdam
+                        <br> expedita, sunt eum recusandae. A!
+                    </p>
+                </div>
+                <div class="interactiveAbout">
+                    <img class="imageAbout" src="../assets/images/duo2.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="footer">
+        <app-footer></app-footer>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="main">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <button class="back" routerLink="/dashboard">Voltar</button>
+      <div class="card main-content">
+          <div class="header">
+            <h2>Clientes Renee</h2>
+          </div>
+          <div class="body table-responsive">
+            <div class="clearfix">
+              <div class="bodyFixed">
+                <div class="row">
+                  <button class="sortLetter" (click)="toggleOrder()">
+                  <mat-icon color="primary">{{ ascendingOrder ? 'text_rotate_up' : 'text_rotation_down' }}</mat-icon>
+                </button>
+                  <mat-form-field>
+                      <input matInput placeholder="Pesquisar" name="keyword" #name (input)="onInputChange(name.value)">
+                  </mat-form-field>
+                  <div class="search">
+                    <button mat-raised-button color="primary" class="search" (click)="filter(name.value)">
+                      Procurar
+                    </button>
+                  </div>
+                  <mat-slide-toggle color="primary" class="slideSelect" [(ngModel)]="listActive"
+                    (change)="listActive ? showActive() : showInactive()">
+                    {{ listActive ? 'Clientes Não Atendidos' : 'Clientes Atendidos' }}
+                  </mat-slide-toggle>
+                </div>
+              </div>
+            </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>SobreNome</th>
+                  <th>Data Marcada</th>
+                  <th>Telefone</th>
+                  <th>Procedimento</th>
+                  <th>Status de Atendimento</th>
+                  <th>Whatsapp Ou Ligação</th>
+                  <th>Atendido</th>
+                </tr>
+              </thead>
+              <tbody *ngIf="items && items.length > 0">
+                <tr *ngFor="let item of items">
+                  <ng-container *ngIf="item.active == listActive">
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.surname }}</td>
+                    <td>{{ item.data }}</td>
+                    <td>{{ item.number | mask: '(00)0.0000-0000'}}</td>
+                    <td>{{ item.procedimento }}</td>
+                    <td>
+                      <mat-icon color="warn" *ngIf="item.active === true">not_interested</mat-icon>
+                      <mat-icon class="green" *ngIf="item.active === undefined">check</mat-icon>
+                    </td>
+                    <td>
+                      <button mat-icon-button class="whats" (click)="openWhatsApp(item.number)">
+                        <i class="pi pi-whatsapp" style="font-size: 1.5rem; color: #0bb00b;"></i>   
+                      </button>
+                      <button mat-icon-button (click)="openCallApp(item.number)">
+                        <mat-icon class="green">phone</mat-icon>
+                      </button>
+                    </td>
+                    <td>
+                        <button class="styledBtn" mat-menu-item *ngIf="item.active === undefined" (click)="enableUser(item)">Cliente não atendido
+                        </button>
+                        <button class="styledBtn" mat-menu-item *ngIf="item.active === true" (click)="disableUser(item)">Concluir Atendimento
+                        </button>
+                    </td>
+                  </ng-container>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.box {
+    margin-bottom: 3rem;
+}
+
+.head h1{
+    text-align: center;
+    margin-top: 3rem;
+    font-family: 'Jost', sans-serif;    
+    font-weight: 600;
+    font-size: 5rem;
+}
+
+.couserTitle{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.couserTitle h1 {
+    text-align: center;
+    margin-top: 5rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 4rem;
+    font-weight: 600;
+    padding: 0 1rem 0 1rem; 
+    color: #880E4F;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+}
+
+.eyeBrow {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem 2rem 0 2rem;
+    justify-content: space-around;
+    border: 2px solid #880E4F;
+    border-radius: 5px;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.cardText{
+    margin-left: 5rem;
+}
+
+.oneBox {
+    align-items: center;
+    justify-content: center;
+}
+
+.oneBox h1 {
+    font-size: 2rem;
+    font-family: 'Jost', sans-serif;
+}
+.oneBox h2 {
+    text-align: center;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    width: 40%;
+}
+
+.twoBox p {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.4rem;
+    font-family: 'Jost', sans-serif;
+    background-color: #880E4F;
+    border-radius: 10px;
+    padding: 15px;
+    color: #fff;
+    margin-top: 2rem;
+}
+
+.twoBox a {
+    color: #fff;
+    text-decoration: none;
+}
+
+button{
+    float: right;
+    margin-top: 2rem;
+    width: 12rem;
+}
+
+.rightBox{
+    float: right;
+    margin-top: 8rem;
+}
+
+.rightBox img {
+    margin-top: 5rem;
+    width: 100%;
+}
+
+
+.imgCarossel{
+    margin-top: 3rem;
+    width: 28rem;
+    border: 2px solid #880E4F;
+    border-radius: 5px;
+}

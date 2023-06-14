@@ -1,0 +1,57 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+img{
+    width: 20rem;
+    margin-top: 1rem;
+}
+
+.text{
+    margin-top: 2rem;
+    font-family: 'Jost', sans-serif; 
+}
+
+.btn{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+button{
+    margin: 10px;
+}
+
+.back{
+    width: 5rem;
+}
+
+.card{
+    margin-top: 1rem;
+    background-color: #f2f1f1;
+    padding: 6rem;
+}
+
+@media (max-width: 800px){
+
+    .main{
+        overflow: none;
+    }
+
+    .text{
+        width: 20rem;
+    }
+
+    .card{
+        margin-top: 4rem;
+        padding: 0;
+    }
+
+    img{
+        width: 15rem;
+        margin-top: 1rem;
+    }
+}

@@ -1,0 +1,58 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$StudioCeR-primary: mat.define-palette(mat.$pink-palette);
+$StudioCeR-accent: mat.define-palette(mat.$pink-palette, 900);
+
+// The warn palette is optional (defaults to red).
+$StudioCeR-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$StudioCeR-theme: mat.define-light-theme((
+  color: (
+    primary: $StudioCeR-primary,
+    accent: $StudioCeR-accent,
+    warn: $StudioCeR-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($StudioCeR-theme);
+
+.mat-mdc-menu-content{
+  background-color: #880E4F !important;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+}
+.mat-horizontal-stepper-header .mat-step-icon{
+  display: none !important;
+}
+
+.mat-step-header{
+  display: none !important;
+}
+
+.mat-horizontal-content-container{
+  padding: 10px 24px 10px 24px !important;
+  border: 1.5px solid #880E4F !important;
+  border-radius: 5px !important;
+}
+
+.mat-mdc-menu-content{
+  padding: 13px !important;
+}

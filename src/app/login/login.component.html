@@ -1,0 +1,28 @@
+<div class="main">
+  <div class="rightBox">
+    <div class="card">
+      <button class="back" routerLink="/homepage">Voltar</button>
+      <div class="body">
+        <img src="../assets/images/logopg.png" alt="">
+        <form novalidate autocomplete="off" #loginForm="ngForm">
+          <h1 class="title">Entrar na sua Conta</h1>
+          <div class="inputsConfiguration">
+            <mat-form-field>
+              <input class="InputClass" matInput name="userNameOrEmailAddress"
+                placeholder="Nome de usuario ou email" autocomplete="off" required maxlength="255" #userName required />
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput class="input-place formControl" type="password" name="password" placeholder="Senha"
+                required maxlength="32" #userPassword required />
+            </mat-form-field>
+          </div>
+          <div class="btnGroup">
+            <button mat-flat-button class="button" type="submit" color="primary"
+              (click)="authService.SignIn(userName.value, userPassword.value)">
+              Acessar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,130 @@
+<div class="background">
+    <div class="main">
+        <h1>Ola! Faça o seu Agendamento</h1>
+        <div class="box-select">
+            <div class="sizing">
+                <div class="calendario-titulo">
+                    <div>
+                        <button (click)="alterarMes(-1)"><mat-icon>fast_rewind</mat-icon></button>
+                    </div>
+                    <div class="calendario-titulo-mes-ano">
+                        {{dataAtual | date : 'MMM yyyy'}}
+                    </div>
+                    <div>
+                        <button (click)="alterarMes(+1)"><mat-icon>fast_forward</mat-icon></button>
+                    </div>
+                </div>
+
+                <div class="calendario-dias">
+                    <ng-container *ngFor="let dia of diasCalendario; let i = index">
+                        <div *ngIf="i < 7" class="semanal-name">
+                            {{ dia | date: 'EEEE' }}
+                        </div>
+                    </ng-container>
+                    <div *ngFor="let dia of diasCalendario; let i = index" class="calendario-dia"
+                        [class.calendario-quebrar-linha]="i % 7 === 0"
+                        [class.calendario-dia-nao-faz-parte-mes-atual]="dataAtual.getMonth() !== dia.getMonth()"
+                        [class.disabled]="dia < today" (click)="selecionarDia(dia)" class="teste">
+                        {{dia | date : 'dd'}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <mat-horizontal-stepper>
+            <mat-step [stepControl]="formUser">
+                <div class="content">
+                    <div class="section">
+                        <form class="user" id="user2" [formGroup]="formUser">
+                            <mat-form-field>
+                                <input matInput name="date" [value]="diaSelecionado | date : 'dd/MM/yyyy'"
+                                    placeholder="Data" formControlName="data" maxlength="16" #data readonly>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput name="name" placeholder="Primeiro Nome" formControlName="name" required>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput name="surname" placeholder="SobreNome" formControlName="surname"
+                                    required>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput name="number" placeholder="Telefone" formControlName="number"
+                                    maxlength="32" required mask="(00)0.0000-0000">
+                            </mat-form-field>
+                            <mat-form-field class="topMargin">
+                                <mat-label>Procedimento</mat-label>
+                                <mat-select name="process" formControlName="process" required>
+                                    <mat-option value="Epilação">Epilação</mat-option>
+                                    <mat-option value="Plastica dos Pés">Plastica dos Pés</mat-option>
+                                    <mat-option value="Sobrancelha">Sobrancelha</mat-option>
+                                    <mat-option value="Dermaplaning">Dermaplaning</mat-option>
+                                    <mat-option value="Lash Lifting">Lash Lifting</mat-option>
+                                    <mat-option value="Extensão de cílios">Extensão de cílios</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field class="topMargin">
+                                <mat-label>Profissional</mat-label>
+                                <mat-select name="professional" #professionalName formControlName="professional"
+                                    (selectionChange)="onProfessionalChange()">
+                                    <mat-option *ngFor="let professional of getAvailableProfessionals()"
+                                        [value]="professional">
+                                        {{ professional }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <div class="align">
+                                <div *ngFor="let procedure of selectedProcedures; let i = index">
+                                    <mat-form-field class="topMargin">
+                                        <mat-label>Procedimento</mat-label>
+                                        <mat-select #additional formControlName="procedure{{ i }}" required>
+                                            <mat-option value="Epilação"
+                                                *ngIf="professionalName.value === 'Renee' && selectedProcedure !== 'Epilação'">Epilação</mat-option>
+                                            <mat-option value="Plastica dos Pés"
+                                                *ngIf="professionalName.value === 'Renee' && selectedProcedure !== 'Plastica dos Pés'">Plastica
+                                                dos Pés</mat-option>
+                                            <mat-option value="Sobrancelha"
+                                                *ngIf="professionalName.value === 'Camille' && selectedProcedure !== 'Sobrancelha'">Sobrancelha</mat-option>
+                                            <mat-option value="Dermaplaning"
+                                                *ngIf="professionalName.value === 'Camille' && selectedProcedure !== 'Dermaplaning'">Dermaplaning</mat-option>
+                                            <mat-option value="Lash Lifting"
+                                                *ngIf="professionalName.value === 'Camille' && selectedProcedure !== 'Lash Lifting'">Lash Lifting</mat-option>
+                                            <mat-option value="Extensão de cílios"
+                                                *ngIf="professionalName.value === 'Camille' && selectedProcedure !== 'Extensão de cílios'">
+                                                Extensão de cílios</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                    <button mat-icon-button color="primary" class="remove"
+                                        (click)="removerProcedimentoProfissional(i)">
+                                        <span class="material-icons">delete</span>
+                                    </button>
+                                </div>
+                                <div class="boxin">
+                                    <button mat-icon-button class="adicionar"
+                                        (click)="adicionarProcedimentoProfissional()">
+                                        <mat-icon class="add">add</mat-icon>
+                                    </button>
+                                    <p class="text-color">Adicionar Mais Um Procedimento*</p>
+                                </div>
+                            </div>
+
+                            <div class="btnGroup row">
+                                <div class="btnGroup">
+                                    <button type="button" class="bttn-Color2" mat-flat-button matStepperPrevious
+                                        mat-dialog-close>Voltar</button>
+                                </div>
+                                <div class="btnGroup">
+                                    <button class="bttn-Color button-align-right" id="userSubmit" mat-flat-button
+                                        mat-dialog-close color="primary" value="Sign Up" [disabled]="isInputEmpty()"
+                                        (click)="send(data.value, professionalName.value)">
+                                        Concluir
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </div>
+</div>

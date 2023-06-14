@@ -1,0 +1,134 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.slideSelect {
+  margin: 1rem;
+}
+
+.back{
+  width: 5rem;
+  background-color: #ccc;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.header{
+  margin-top: 1rem;
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.header h2 {
+  font-family: 'Jost', sans-serif; 
+  border-bottom: 1px solid #000;
+  font-weight: bold;
+  width: 15.5rem;
+}
+
+.styledBtn{
+  background-color: #ccc;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  height: 3rem;
+  width: 12rem;
+  border-radius: 5px;
+}
+
+.styledBtn:hover{
+  transition: 0.5s;
+  background-color: #afa5aa;
+}
+
+.sortLetter{
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  margin-right: 10px;
+}
+
+.green{
+  color: #0bb00b;
+}
+
+.menu{
+  display: flex;
+  flex-direction: column;
+}
+
+.table {
+  flex-direction: column;
+  overflow-x: hidden;
+  color: #000;
+  margin-top: 80px;
+}
+
+.whats{
+  border: none;
+  background-color: transparent;
+}
+
+.table td, .table th {
+  vertical-align: middle;
+}
+
+.bodyFixed {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+}
+
+td {
+  align-items: center;
+  text-align: center;
+}
+
+th{
+  align-items: center;
+  text-align: center;
+}
+
+.pull-right {
+  margin-top: 10px !important;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.search {
+  margin-left: 15px;
+  margin-top: 5px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+}
+
+.sortLetter{
+  margin-left: 10px;
+}
+
+
+@media (max-width: 700px){
+  .card{
+    width: 70rem;
+  }
+
+  .bodyFixed{
+    width: 40rem;
+    overflow-x: auto;
+  }
+}
+
+
+

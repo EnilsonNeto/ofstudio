@@ -1,0 +1,147 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sizing img {
+    width: 18rem;
+}
+
+.sizing {
+    background-color: #880E4F;
+    height: 80px;
+}
+
+button{
+    background-color: transparent;
+    color: #fff;
+    border: 0;
+    font-weight: bold;
+}
+
+.navMenu button:hover{
+    color: #b4b1b1;
+    transition: 0.4s;
+}
+
+.navMenu2{
+    font-weight: bold;
+}
+
+.leftBox {
+    display: flex;
+    flex-direction: row;
+}
+
+.teste {
+    height: 5rem;
+    text-align: center;
+    align-items: center;
+    padding-right: 80px;
+    width: 100vw;
+    display: flex;
+}
+
+.navMenu {
+    display: block;
+    width: 100%;
+}
+
+.navMenu ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navMenu li {
+    padding-top: 15px;
+}
+
+.navMenu a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    font-family: 'Jost', sans-serif;
+}
+
+.navMenu a:hover {
+    color: #b4b1b1;
+    transition: 0.4s;
+}
+.menuIcon{
+    display: none;
+}
+
+.large-icon{
+    transform: scale(1.6);
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+a:hover{
+    color: #b4b1b1;
+    transition: 0.4s;
+}
+
+.repons{
+    display: none;
+}
+
+@media (max-width: 1200px) {
+    
+     .navBar, .navMenu{
+        display: none;
+    }
+
+    .repons, .menuIcon, .sizing img{
+        display: block;
+    }
+
+
+    mat-icon{
+        display: flex;
+        float: right;
+    }
+    
+
+    .sizing img {
+        width: 12rem;
+    }
+
+    .example-spacer {
+        flex: 1 1 auto;
+      }
+
+      .leftBox{
+        height: 0;
+      }
+    
+      .navMenu2{
+        padding: 15px;
+        border-radius: 5px;
+      }
+
+      li{
+        margin-bottom: 8px;
+      }
+
+      a{
+        font-family: 'Jost', sans-serif;
+      }
+} 
+
+@media (max-width: 800px){
+    .sizing img {
+        width: 10rem;
+    }
+}
